@@ -1,0 +1,26 @@
+{{#each data}}
+<div class="d-flex justify-content-center col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 p-1">    
+    <div class="card info-card">        
+        <img src="img/{{imagePath}}" class="card-img-top info-card-img" alt="..." />
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <h6 class="card-title">{{brand}}</h6>
+                <div class="d-flex align-items-center">
+                {{#if newlyLaunched}}                    
+                    <span class="badge rounded-pill bg-success m-1">New</span>
+                {{/if}}
+                {{#if onDiscount}}                    
+                    <span class="badge rounded-pill bg-danger">Sale!!</span>
+                {{/if}}                
+                </div>
+            </div>
+            <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk
+                of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary btn-sm">Details</a>
+            <a href="#" class="btn btn-primary btn-sm">Add to cart</a>
+        </div>
+    </div>    
+</div>
+{{/each}}

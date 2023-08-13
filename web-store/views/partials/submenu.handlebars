@@ -1,0 +1,7 @@
+<ul class="nav nav-brand-tabs justify-content-center">
+  {{#each partials.brands}}
+    <li class="mx-lg-3 mx-1">
+      <a class="nav-link nav-brand {{#if active}}active{{/if}}" href="{{url}}">{{name}}</a>
+    </li>
+  {{/each}}
+</ul>

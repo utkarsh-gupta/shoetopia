@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+    <div class="d-flex justify-content-center col-12">
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            {{#each partials.genderFilter}}
+                <input type="checkbox" class="btn-check" id="{{id}}" autocomplete="off" 
+                onclick="shoetopia.genderFilterClicked('{{id}}')" {{#if checked}}checked{{/if}}
+                />
+                <label class="btn btn-outline-secondary filter-gender" for="{{id}}">
+                    <span><i class="bi bi-person-fill"></i> {{name}}</span>
+                </label>
+            {{/each}}
+        </div>
+    </div>
+</div>

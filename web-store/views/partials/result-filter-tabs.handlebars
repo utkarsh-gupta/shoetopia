@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  {{#each partials.resultFilter}}
+    <li class="nav-item" role="presentation">
+      <a class="nav-link {{#if active}}active{{/if}}" id="{{id}}"
+      href="#" onclick="shoetopia.setFilterQuery(event, '{{id}}')">{{name}}</a>
+    </li>
+  {{/each}}
+</ul>
