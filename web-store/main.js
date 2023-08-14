@@ -5,6 +5,12 @@ const _ = require("lodash");
 
 const CONSTANTS = require("./config");
 const MOCK_DATA = require("./mockdata");
+const {
+  filterByType,
+  filterByGender,
+  applyDiscount,
+  filterByBrand,
+} = require("./util");
 
 const handlebars = require("express-handlebars").create({
   defaultLayout: "main",
@@ -35,16 +41,14 @@ app.engine("handlebars", handlebars.engine);
 app.use((req, res, next) => {
   console.log(`RequestQuery: ${JSON.stringify(req.query)}`);
   console.log("-------------------");
-  console.log(`RequestParameters: ${JSON.stringify(req.params)}`);
   next();
 });
 
 app.use((req, res, next) => {
   if (!res.locals.partials) res.locals.partials = {};
-  // TO FIX FURTHER
-  // const brands = _.get(req, "query.resultFilter", "all");
+  const path = req.path;
   const brandList = _.map(CONSTANTS.BRANDS, (elem) =>
-    elem.id === "" ? _.extend({}, elem, { active: true }) : elem
+    elem.url === path ? _.extend({}, elem, { active: true }) : elem
   );
   res.locals.partials.brands = brandList;
   next();
@@ -71,38 +75,32 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", function (req, res) {
-  const rf = res.locals.filters.selectedResultFilter;
-  const firstFiltered = _.filter(
-    MOCK_DATA,
-    (elem) =>
-      rf === "all" ||
-      (rf === "newly-launched" && elem.newlyLaunched) ||
-      (rf === "on-sale" && elem.onDiscount)
-  );
-  const ugen = res.locals.filters.unSelectedGender;
-  const secondFiltered = _.filter(
-    firstFiltered,
-    (elem) =>
-      ugen === "" ||
-      (ugen === "no-male" && !elem.forMale) ||
-      (ugen === "no-female" && !elem.forFemale)
-  );
+app.get("/:brand", function (req, res) {
+  const brand = req.params.brand;
+  const forBrand = filterByBrand(MOCK_DATA, brand);
+  const filtered = filterByGender(filterByType(forBrand, req, res), req, res);
+  const finalData = applyDiscount(filtered);
 
-  res.render("home-item", { data: secondFiltered });
+  res.render("home-item", { data: finalData });
+});
+
+app.get("/", function (req, res) {
+  const filtered = filterByGender(filterByType(MOCK_DATA, req, res), req, res);
+  const finalData = applyDiscount(filtered);
+  res.render("home-item", { data: finalData });
 });
 
 // routes(app);
 
 app.use((req, res) => {
   res.status(404);
-  res.render("404");
+  res.render("404", { layout: null });
 });
 
 app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500);
-  res.render("500");
+  res.render("500", { layout: null });
 });
 
 app.listen(PORT, (err) => {

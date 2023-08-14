@@ -141,3 +141,9 @@ body::before {
   font-size: 1.3rem;
   margin-right: 4px;
 }
+
+.card-img{
+  width: 1.7rem;
+  height: 2rem;  
+  margin-right: 2px;
+}
