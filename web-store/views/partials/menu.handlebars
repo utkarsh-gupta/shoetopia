@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
     <div class="container">
-        <a href="#" class="navbar-brand">Shoetopia</a>
+        <a href="/" class="navbar-brand">Shoetopia</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-lg-3">
-                    <a href="#cart" class="nav-link d-flex">
+                    <a href="/cart" class="nav-link d-flex">
                         <i class="bi bi-cart cart-icon"></i>
-                        <span class="badge bg-danger">5</span>
+                        <span class="badge bg-danger">{{session.cart.length}}</span>
                     </a>
                 </li>
                 <li class="nav-item">

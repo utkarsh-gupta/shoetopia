@@ -1,2 +1,3 @@
 # shoetopia
-An express and node based e-commerce shoe store.
+
+An e-commerce shoe store. Built using node, express, handlebars.

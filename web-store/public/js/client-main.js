@@ -5,7 +5,6 @@ const shoetopia = (() => {
       GENDER_FILTER: "genderFilter",
     },
   };
-
   const doRequest = (srcElem, id) => {
     const curLoc = window.location.pathname;
     // console.log(`curLoc: ${curLoc}`);
@@ -59,6 +58,10 @@ const shoetopia = (() => {
         return;
       }
       doRequest(CONSTANTS.FILTER_SRC.GENDER_FILTER, id);
+    },
+    prepareAddToCart: (code, name) => {
+      $("#modalCartTitle").html(`${name} - (${code})`);
+      $("#idCode").val(code);
     },
   };
 })();

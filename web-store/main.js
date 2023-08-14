@@ -1,7 +1,11 @@
 const express = require("express");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
 const _ = require("lodash");
+
+const twoHours = 1000 * 60 * 60 * 2;
 
 const CONSTANTS = require("./config");
 const MOCK_DATA = require("./mockdata");
@@ -31,9 +35,18 @@ const publicDir = path.join(__dirname, "/public");
 const viewsDir = path.join(__dirname, "views");
 
 app.use(cors());
+app.use(
+  session({
+    secret: "askdfjs897roishoetopia8349734589oiefjfmxptoir",
+    saveUninitialized: true,
+    cookie: { maxAge: twoHours },
+    resave: false,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(publicDir));
+app.use(cookieParser());
 
 app.set("view engine", "handlebars");
 app.engine("handlebars", handlebars.engine);
@@ -41,6 +54,12 @@ app.engine("handlebars", handlebars.engine);
 app.use((req, res, next) => {
   console.log(`RequestQuery: ${JSON.stringify(req.query)}`);
   console.log("-------------------");
+  next();
+});
+
+app.use((req, res, next) => {
+  if (!req.session.cart) req.session.cart = [];
+  res.locals.session = req.session;
   next();
 });
 
@@ -88,6 +107,18 @@ app.get("/", function (req, res) {
   const filtered = filterByGender(filterByType(MOCK_DATA, req, res), req, res);
   const finalData = applyDiscount(filtered);
   res.render("home-item", { data: finalData });
+});
+
+app.post("/addToCart", function (req, res) {
+  const { code, shoeSize, pairCount } = req.body;
+  req.session.cart.push({ code, shoeSize, pairCount });
+  res.redirect("/");
+});
+
+app.get("/logout", function (req, res) {
+  req.session.destroy();
+  res.locals.session = null;
+  res.redirect("/");
 });
 
 // routes(app);

@@ -147,3 +147,7 @@ body::before {
   height: 2rem;  
   margin-right: 2px;
 }
+
+.btn-same{
+  width: 100px;
+}
