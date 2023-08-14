@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Shoetopia</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="card bg-white">
+                        <div class="card-body p-5">
+                            <form class="mb-3 mt-md-4" method="post" action="/sign-in">
+                                <h2 class="fw-bold mb-2 text-uppercase">Shoetopia</h2>
+                                <p class="mb-3">Please enter your login (email) and password!</p>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="email" name="email" required
+                                        placeholder="name@example.com" />
+                                </div>
+                                <div class="mb-4">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        required />
+                                </div>
+                                {{!-- <p class="small"><a class="text-primary" href="forget-password.html">Forgot
+                                        password?</a></p> --}}
+                                <div class="d-grid">
+                                    <button class="btn btn-outline-dark" type="submit">Login</button>
+                                </div>
+                            </form>
+                            <div>
+                                <p class="mb-0 text-center">Don't have an account?
+                                    <a href="#" class="text-primary fw-bold">Sign Up</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scripts -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/chibi/chibi-min.js"></script>
+    <script src="js/client-main.js"></script>
+</body>
+
+</html>

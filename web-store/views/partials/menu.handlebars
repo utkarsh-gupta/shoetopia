@@ -12,11 +12,17 @@
                         <span class="badge bg-danger">{{session.cart.length}}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{!-- <li class="nav-item">
                     <a href="#sign-up" class="nav-link">Sign-up</a>
-                </li>
+                </li> --}}
+                {{#if session.user}}
                 <li class="nav-item">
-                    <a href="#sign-in" class="nav-link">Sign-In</a>
+                    <a href="#" class="nav-link">{{session.user.name}}</a>
+                </li>
+                {{/if}}
+                <li class="nav-item">
+                    {{#if session.user}}<a href="/logout" class="nav-link">Logout</a>{{/if}}
+                    {{#unless session.user}}<a href="/sign-in" class="nav-link">Sign-In</a>{{/unless}}
                 </li>
             </ul>
         </div>

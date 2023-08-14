@@ -9,18 +9,19 @@ const twoHours = 1000 * 60 * 60 * 2;
 
 const CONSTANTS = require("./config");
 const MOCK_DATA = require("./mockdata");
+const MOCK_USERS = require("./mockUsers");
+
 const {
   filterByType,
   filterByGender,
   applyDiscount,
   filterByBrand,
 } = require("./util");
+const mockUsers = require("./mockUsers");
 
 const handlebars = require("express-handlebars").create({
   defaultLayout: "main",
 });
-
-// const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 5050;
@@ -60,6 +61,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   if (!req.session.cart) req.session.cart = [];
   res.locals.session = req.session;
+  console.log(`The logged user is ${req.session.user}`);
   next();
 });
 
@@ -94,19 +96,21 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/:brand", function (req, res) {
-  const brand = req.params.brand;
-  const forBrand = filterByBrand(MOCK_DATA, brand);
-  const filtered = filterByGender(filterByType(forBrand, req, res), req, res);
-  const finalData = applyDiscount(filtered);
-
-  res.render("home-item", { data: finalData });
+app.get("/sign-in", function (req, res) {
+  res.render("login", { layout: null });
 });
 
-app.get("/", function (req, res) {
-  const filtered = filterByGender(filterByType(MOCK_DATA, req, res), req, res);
-  const finalData = applyDiscount(filtered);
-  res.render("home-item", { data: finalData });
+app.post("/sign-in", function (req, res) {
+  const { email, password } = req.body;
+  const loggedUser = _.find(MOCK_USERS, (user) => {
+    return user.email === email && user.password === password;
+  });
+  if (!loggedUser) {
+    res.redirect("/sign-in");
+  } else {
+    req.session.user = loggedUser;
+    res.redirect("/");
+  }
 });
 
 app.post("/addToCart", function (req, res) {
@@ -119,6 +123,20 @@ app.get("/logout", function (req, res) {
   req.session.destroy();
   res.locals.session = null;
   res.redirect("/");
+});
+
+app.get("/:brand", function (req, res) {
+  const brand = req.params.brand;
+  const forBrand = filterByBrand(MOCK_DATA, brand);
+  const filtered = filterByGender(filterByType(forBrand, req, res), req, res);
+  const finalData = applyDiscount(filtered);
+  res.render("home-item", { data: finalData });
+});
+
+app.get("/", function (req, res) {
+  const filtered = filterByGender(filterByType(MOCK_DATA, req, res), req, res);
+  const finalData = applyDiscount(filtered);
+  res.render("home-item", { data: finalData });
 });
 
 // routes(app);
