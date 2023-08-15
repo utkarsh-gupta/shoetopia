@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row justify-content-center mt-5 mx-3">
+        <div class="col-10">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Size (US)</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col" class="tbl-cell-right">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each cartData}}
+                    <tr>
+                        <th scope="row">{{code}}</th>
+                        <td>{{name}}</td>
+                        <td>{{shoeSize}}</td>
+                        <td>{{pairCount}}</td>
+                        <td class="tbl-cell-right">{{price}}</td>
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <th scope="row" class="tbl-cell-right" colspan="4"></th>
+                        <td class="tbl-cell-right"><b>{{total}}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-8 d-flex justify-content-center align-items-center mt-3">
+            <a href="/" class="btn btn-outline-danger btn-sm btn-w-2 mx-2">Continue Shopping</a>
+            <a href="/purchase" class="btn btn-outline-primary btn-sm btn-w-2">Purchase</a>
+
+        </div>
+    </div>
+</div>

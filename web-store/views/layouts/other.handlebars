@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Shoetopia</title>
+</head>
+
+<body>
+  <!-- menu / navbar -->
+  <section>
+    {{> menu}}
+  </section>
+
+  <!-- items -->
+  <section>
+    <div class="container">
+      <div class="row justify-content-center">
+        {{{body}}}
+      </div>
+    </div>
+  </section>
+  <!-- scripts -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/chibi/chibi-min.js"></script>
+  <script src="js/client-main.js"></script>
+</body>
+
+</html>

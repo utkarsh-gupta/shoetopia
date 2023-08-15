@@ -9,15 +9,16 @@ const twoHours = 1000 * 60 * 60 * 2;
 
 const CONSTANTS = require("./config");
 const MOCK_DATA = require("./mockdata");
-const MOCK_USERS = require("./mockUsers");
+const MOCK_USERS = require("./mockusers");
 
 const {
   filterByType,
   filterByGender,
   applyDiscount,
   filterByBrand,
+  getCartData,
+  getCartTotal,
 } = require("./util");
-const mockUsers = require("./mockUsers");
 
 const handlebars = require("express-handlebars").create({
   defaultLayout: "main",
@@ -117,6 +118,29 @@ app.post("/addToCart", function (req, res) {
   const { code, shoeSize, pairCount } = req.body;
   req.session.cart.push({ code, shoeSize, pairCount });
   res.redirect("/");
+});
+
+app.get("/cart", function (req, res) {
+  const cartData = getCartData(MOCK_DATA, req, res);
+  const total = getCartTotal(cartData);
+  res.render("cart", { layout: "other", cartData: cartData, total: total });
+});
+
+app.get("/purchase", function (req, res) {
+  const loggedUser = req.session.user;
+  if (!loggedUser) {
+    res.redirect("/sign-in");
+  } else {
+    const cartData = getCartData(MOCK_DATA, req, res);
+    const total = getCartTotal(cartData);
+    req.session.cart = [];
+    res.render("purchase", {
+      layout: "other",
+      cartData: cartData,
+      total: total,
+      user: loggedUser,
+    });
+  }
 });
 
 app.get("/logout", function (req, res) {

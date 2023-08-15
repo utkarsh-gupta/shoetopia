@@ -6,6 +6,7 @@ const users = [
     address: "123 George Street",
     suburb: "Sydney",
     state: "NSW",
+    pin: 2000,
     country: "Australia",
   },
   {
@@ -15,6 +16,7 @@ const users = [
     address: "175 Kent Street",
     suburb: "Sydney",
     state: "NSW",
+    pin: 2000,
     country: "Australia",
   },
 ];

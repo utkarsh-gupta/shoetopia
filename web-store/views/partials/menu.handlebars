@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-lg-3">
-                    <a href="/cart" class="nav-link d-flex">
+                    <a {{#if session.cart.length}}href="/cart" {{/if}} class="nav-link d-flex">
                         <i class="bi bi-cart cart-icon"></i>
                         <span class="badge bg-danger">{{session.cart.length}}</span>
                     </a>

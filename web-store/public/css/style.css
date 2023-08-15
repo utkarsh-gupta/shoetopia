@@ -148,6 +148,14 @@ body::before {
   margin-right: 2px;
 }
 
-.btn-same{
+.btn-w-1{
   width: 100px;
+}
+
+.btn-w-2{
+  width: 200px;
+}
+
+.tbl-cell-right{
+  text-align: right;
 }
