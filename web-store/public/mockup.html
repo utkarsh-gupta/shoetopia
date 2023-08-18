@@ -1,0 +1,267 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Shoetopia</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+      <div class="container">
+        <a href="#" class="navbar-brand">Shoetopia</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item mx-lg-3">
+              <a href="#cart" class="nav-link d-flex">
+                <i class="bi bi-cart" style="font-size: 1.2rem"></i>
+                <span class="badge bg-danger">5</span>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+              <a href="#sign-up" class="nav-link">Sign-up</a>
+            </li> -->
+            <li class="nav-item">
+              <a href="#sign-in" class="nav-link">Sign-In</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- submenu -->
+    <section class="submenu">
+      <ul class="nav justify-content-center">
+        <li class="nav-item mx-lg-3 mx-1">
+          <a class="text-warning nav-link" aria-current="page" href="#">Nike</a>
+        </li>
+        <li class="nav-item mx-lg-3 mx-1">
+          <a class="text-warning nav-link" href="#">Adidas</a>
+        </li>
+        <li class="nav-item mx-lg-3 mx-1">
+          <a class="text-warning nav-link" href="#">Puma</a>
+        </li>
+        <li class="nav-item mx-lg-3 mx-1">
+          <a class="text-warning nav-link" href="#">VANS</a>
+        </li>
+        <li class="nav-item mx-lg-3 mx-1">
+          <a class="text-warning nav-link" href="#">Sketchers</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Tabs -->
+    <section class="section-padding">
+      <div class="container-fluid">
+        <div class="row">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="design-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#design-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="design-tab-pane"
+                aria-selected="true"
+              >
+                All
+              </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="newLaunches-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#newLaunches-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="newLaunches-tab-pane"
+                aria-selected="false"
+              >
+                Newly Launched
+              </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="#">On Sale</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container mb-3">
+        <div class="row justify-content-center">
+          <div class="d-flex justify-content-center col-12">
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="Basic checkbox toggle button group"
+            >
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="id-male"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn btn-outline-secondary filter-gender"
+                for="id-male"
+                ><span>
+                  <i class="bi bi-person-fill"></i>
+                  Male
+                </span></label
+              >
+              <input
+                type="checkbox"
+                class="btn-check"
+                id="id-female"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="btn btn-outline-secondary filter-gender"
+                for="id-female"
+                ><span>
+                  Female
+                  <i class="bi bi-person-fill"></i></span
+              ></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div
+            class="d-flex justify-content-center col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 p-1"
+          >
+            <div class="card info-card">
+              <img
+                src="/img/product/product_1.jpg"
+                class="card-img-top info-card-img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Details</a>
+                <a href="#" class="btn btn-primary">Add to cart</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-center col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 p-1"
+          >
+            <div class="card info-card">
+              <img
+                src="/img/product/product_2.jpg"
+                class="card-img-top info-card-img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Details</a>
+                <a href="#" class="btn btn-primary">Add to cart</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-center col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 p-1"
+          >
+            <div class="card info-card">
+              <img
+                src="/img/product/product_3.jpg"
+                class="card-img-top info-card-img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Details</a>
+                <a href="#" class="btn btn-primary">Add to cart</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-center col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 p-1"
+          >
+            <div class="card info-card">
+              <img
+                src="/img/product/product_4.jpg"
+                class="card-img-top info-card-img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Details</a>
+                <a href="#" class="btn btn-primary">Add to cart</a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex justify-content-center col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 p-1"
+          >
+            <div class="card info-card">
+              <img
+                src="/img/product/product_5.jpg"
+                class="card-img-top info-card-img"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Details</a>
+                <a href="#" class="btn btn-primary">Add to cart</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Tabs -->
+
+    <!-- BOOTSTRAP JAVASCRIPT FILES DON'T CHANGE BELOW THIS POINT-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/chibi-min.js"></script>
+    <script>
+      $().ready(() => {});
+    </script>
+  </body>
+</html>
