@@ -63,5 +63,9 @@ const shoetopia = (() => {
       $("#modalCartTitle").html(`${name} - (${code})`);
       $("#idCode").val(code);
     },
+    prepareToShowDetail: (code, name, desc) => {
+      $("#modalDetailTitle").html(`${name} - (${code})`);
+      $("#idDesc").html(desc);
+    },
   };
 })();

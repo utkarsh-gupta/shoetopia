@@ -159,3 +159,12 @@ body::before {
 .tbl-cell-right{
   text-align: right;
 }
+
+.view-video {
+  text-align: center;
+  position: relative;
+  left: 50%;  
+  transform: translateX(-50%); 
+  width: 400;
+  height: 300; 
+}
