@@ -6,6 +6,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalCredit">Credit</a>
+                </li>
+
                 <li class="nav-item mx-lg-3">
                     <a {{#if session.cart.length}}href="/cart" {{/if}} class="nav-link d-flex">
                         <i class="bi bi-cart cart-icon"></i>
@@ -28,3 +32,60 @@
         </div>
     </div>
 </nav>
+<div id="modalCredit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modalCreditTitle">Knowledge and Resource List (with Thanks)</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center align-items-center">
+                    <table class="table table-striped table-sm table-borderless w-auto credit-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Type</th>
+                                <th scope="col" colspan="2">Information</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Shoes Images</td>
+                                <td colspan="2">https://github.com/minimal-ui-kit/material-kit-react</td>
+                            </tr>
+                            <tr>
+                                <td>Express Tutorial</td>
+                                <td>https://www.youtube.com/watch?v=Oe421EPjeBE&amp;pp=ygUMbm9kZSBleHByZXNz</td
+                                    colspan="2">
+                            </tr>
+                            <tr>
+                                <td>Handlebars Tutorial</td>
+                                <td>https://www.youtube.com/watch?v=erfN7fH7A6s&amp;list=PLurIMwd6GdCi3ssXNAcjZ2l5mYaTfYPhf
+                                </td colspan="2">
+                            </tr>
+                            <tr>
+                                <td>HTML Tutorial</td>
+                                <td colspan="2">https://www.w3schools.com/html/default.asp</td>
+                            </tr>
+                            <tr>
+                                <td>CSS Tutorial</td>
+                                <td colspan="2">https://www.w3schools.com/css/default.asp</td>
+                            </tr>
+                            <tr>
+                                <td>Javascript Tutorial</td>
+                                <td colspan="2">https://www.w3schools.com/js/default.asp</td>
+                            </tr>
+                            <tr>
+                                <td>Bootstrap 5</td>
+                                <td colspan="2">https://getbootstrap.com/docs/5.0/getting-started/introduction/</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer p-2">
+                    <button type="button" class="btn btn-secondary btn-w-1" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
