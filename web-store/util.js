@@ -47,11 +47,13 @@ const applyDiscount = (data) => {
   return result;
 };
 
-const getShoeNamePrice = (shoes, code) => {
+const getShoeNamePrice = (shoes, code, pairCount) => {
   const info = _.find(shoes, (elem) => elem.code === code);
   return {
     name: info.name,
-    price: info.onDiscount ? info.finalDiscountPrice : info.price,
+    price: parseFloat(
+      (info.onDiscount ? info.finalDiscountPrice : info.price) * pairCount
+    ).toFixed(2),
   };
 };
 
@@ -59,7 +61,11 @@ const getCartData = (data, req, res) => {
   const withDiscount = applyDiscount(data);
   const cart = req.session.cart;
   const result = _.map(req.session.cart, (elem) =>
-    _.extend({}, elem, getShoeNamePrice(withDiscount, elem.code))
+    _.extend(
+      {},
+      elem,
+      getShoeNamePrice(withDiscount, elem.code, elem.pairCount)
+    )
   );
   return result;
 };
@@ -69,7 +75,7 @@ const getCartTotal = (cartData) => {
     _.reduce(
       _.map(cartData, (e) => e.price),
       (sum, cur) => sum + cur,
-      0
+      0.0
     )
   ).toFixed(2);
   return total;
