@@ -3,7 +3,7 @@ module.exports = Object.freeze({
     {
       id: "",
       name: "All Brands",
-      url: "/",
+      url: "/home",
     },
     {
       id: "nike",

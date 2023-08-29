@@ -110,14 +110,20 @@ app.post("/sign-in", function (req, res) {
     res.redirect("/sign-in");
   } else {
     req.session.user = loggedUser;
-    res.redirect("/");
+    res.redirect("/home");
   }
 });
 
 app.post("/addToCart", function (req, res) {
   const { code, shoeSize, pairCount } = req.body;
   req.session.cart.push({ code, shoeSize, pairCount });
-  res.redirect("/");
+  res.redirect("/home");
+});
+
+app.get("/home", function (req, res) {
+  const filtered = filterByGender(filterByType(MOCK_DATA, req, res), req, res);
+  const finalData = applyDiscount(filtered);
+  res.render("home-item", { data: finalData });
 });
 
 app.get("/cart", function (req, res) {
@@ -158,9 +164,7 @@ app.get("/:brand", function (req, res) {
 });
 
 app.get("/", function (req, res) {
-  const filtered = filterByGender(filterByType(MOCK_DATA, req, res), req, res);
-  const finalData = applyDiscount(filtered);
-  res.render("home-item", { data: finalData });
+  res.render("welcome", { layout: "other" });
 });
 
 // routes(app);

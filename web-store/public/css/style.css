@@ -67,6 +67,20 @@ body::before {
   padding-bottom: 10px;
 }
 
+.welcome-section {
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  position: relative;
+  overflow: hidden;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 1rem;
+}
+
+.welcome-img {  
+  width: 300;
+  height: 200;
+}
+
 .tab-content {
   background-color: var(--white-color);
   border-radius: var(--border-radius-medium);
