@@ -64,7 +64,11 @@ body::before {
 
 .section-padding {
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 10px;  
+}
+
+.welcome-div {  
+  margin-top: 2rem;     
 }
 
 .welcome-section {
