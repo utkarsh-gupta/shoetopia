@@ -63,6 +63,13 @@ const shoetopia = (() => {
       $("#modalCartTitle").html(`${name} - (${code})`);
       $("#idCode").val(code);
     },
+    validateSelection: (event) => {
+      if($("#idShoeSize").val() === 'Choose'){
+        $("#idShoeSizeErr").html("Required");
+        return false;
+      }      
+      return true;
+    },
     prepareToShowDetail: (code, name, desc) => {
       $("#modalDetailTitle").html(`${name} - (${code})`);
       $("#idDesc").html(desc);

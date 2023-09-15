@@ -71,14 +71,12 @@ const getCartData = (data, req, res) => {
 };
 
 const getCartTotal = (cartData) => {
-  const total = parseFloat(
-    _.reduce(
-      _.map(cartData, (e) => e.price),
-      (sum, cur) => sum + cur,
-      0.0
-    )
-  ).toFixed(2);
-  return total;
+  const total = _.reduce(
+    _.map(cartData, (i) => parseFloat(i.price)),
+    (sum, cur) => sum + cur
+  );
+  // console.log(JSON.stringify(total, null, 1));
+  return total.toFixed(2);
 };
 
 module.exports = {
